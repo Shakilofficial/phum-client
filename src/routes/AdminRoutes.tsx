@@ -1,11 +1,9 @@
-import { NavLink } from "react-router-dom";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
-import { TRoute, TSideBarItem } from "../types";
 
-const adminPaths = [
+export const adminPaths = [
   {
     name: "Dashboard",
     path: "dashboard",
@@ -33,7 +31,9 @@ const adminPaths = [
   },
 ];
 
-// dynaamic way to do it
+// create utility function for bellow codes
+
+/* // dynaamic way to do it
 export const adminRoutes = adminPaths.reduce((acc: TRoute[], item) => {
   if (item?.path && item?.element) {
     acc.push({
@@ -50,9 +50,9 @@ export const adminRoutes = adminPaths.reduce((acc: TRoute[], item) => {
     });
   }
   return acc;
-}, []);
+}, []); */
 
-export const adminSideBarItems = adminPaths.reduce(
+/* export const adminSideBarItems = adminPaths.reduce(
   (acc: TSideBarItem[], item) => {
     if (item?.path && item?.name) {
       acc.push({
@@ -75,7 +75,7 @@ export const adminSideBarItems = adminPaths.reduce(
     return acc;
   },
   []
-);
+); */
 
 //hardcoded way to do it
 /* export const AdminPaths = [
