@@ -70,3 +70,5 @@ const newArry = AdminRoutes.reduce((acc, item) => {
 }, []);
 
 console.log(JSON.stringify(newArry));
+
+
