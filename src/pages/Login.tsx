@@ -30,7 +30,6 @@ const Login = () => {
       };
       const response = await login(credentials).unwrap();
       const user = verifyToken(response.data.accessToken) as TUser;
-      console.log(user);
       dispatch(setUser({ user: user, token: response.data.accessToken }));
       toast.success("Logged in successfully", { id: toastId, duration: 3000 });
       navigate(`/${user.role}/dashboard`);
