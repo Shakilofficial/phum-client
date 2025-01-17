@@ -28,12 +28,14 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   DefinitionType
 > = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
-  //handling if user not found
+
   if (result?.error?.status === 404) {
-    toast.error("User not found");
+    toast.error(result.error.data.message);
   }
   if (result?.error?.status === 401) {
-    // Refresh the token if 401 is returned
+    //* Send Refresh
+    console.log("Sending refresh token");
+
     const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
       method: "POST",
       credentials: "include",
@@ -43,12 +45,20 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 
     if (data?.data?.accessToken) {
       const user = (api.getState() as RootState).auth.user;
-      api.dispatch(setUser({ user, token: data.data.accessToken }));
+
+      api.dispatch(
+        setUser({
+          user,
+          token: data.data.accessToken,
+        })
+      );
+
       result = await baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(logout());
     }
   }
+
   return result;
 };
 
