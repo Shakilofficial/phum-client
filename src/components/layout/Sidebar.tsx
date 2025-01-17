@@ -31,7 +31,7 @@ const Sidebar = () => {
   }
 
   return (
-    <Sider breakpoint="lg" collapsedWidth="0">
+    <Sider breakpoint="lg" collapsedWidth="0" width={256}>
       <div
         style={{
           color: "white",
