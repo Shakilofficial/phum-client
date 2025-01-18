@@ -12,40 +12,6 @@ import {
 } from "../../redux/features/admin/academicManagementApi";
 import { useCreateStudentMutation } from "../../redux/features/admin/userManagementApi";
 
-const studentDummyData = {
-  password: "kate.miller",
-  student: {
-    name: {
-      firstName: "Kate",
-      lastName: "Miller",
-    },
-    gender: "female",
-    dateOfBirth: "1997-02-14",
-    email: "kate.miller@example.com",
-    contactNo: "4455667788",
-    emergencyContactNo: "8877665544",
-    bloodGroup: "AB-",
-    presentAddress: "21 Oak St, Anytown",
-    permanentAddress: "43 Maple Ave, Anytown",
-    guardian: {
-      fatherName: "Daniel Miller",
-      fatherOccupation: "Doctor",
-      fatherContactNo: "5566778899",
-      motherName: "Elizabeth Miller",
-      motherOccupation: "Lawyer",
-      motherContactNo: "6677889900",
-    },
-    localGuardian: {
-      name: "Susan Brown",
-      occupation: "Engineer",
-      contactNo: "1234567890",
-      address: "Chicago",
-    },
-    admissionSemester: "67751e2c15a7855af07dad94",
-    academicDepartment: "67751693989691d8ceef4502",
-  },
-};
-
 const studentDefaultData = {
   name: {
     firstName: "Mr.",
