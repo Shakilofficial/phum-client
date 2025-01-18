@@ -1,9 +1,9 @@
 import {
   BaseQueryApi,
   BaseQueryFn,
-  createApi,
   DefinitionType,
   FetchArgs,
+  createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 import { toast } from "sonner";
@@ -15,9 +15,11 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
+
     if (token) {
-      headers.set("Authorization", `${token}`); // Add the token to the request headers if it exists
+      headers.set("authorization", `${token}`);
     }
+
     return headers;
   },
 });
