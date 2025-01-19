@@ -73,7 +73,7 @@ const StudentLists = () => {
       render: (item) => {
         return (
           <Space>
-            <Link to={`/admin/student-data/${item.key}`}>
+            <Link to={`/admin/all-students/${item.key}`}>
               <Button>Details</Button>
             </Link>
             <Button>Update</Button>
@@ -116,6 +116,7 @@ const StudentLists = () => {
         pagination={false}
       />
       <Pagination
+        style={{ marginTop: "20px" }}
         current={page}
         onChange={(value) => setPage(value)}
         pageSize={metaData?.limit}
@@ -124,5 +125,4 @@ const StudentLists = () => {
     </>
   );
 };
-
 export default StudentLists;
