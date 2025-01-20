@@ -145,7 +145,6 @@ const CreateFaculty = () => {
               />
             </Col>
           </Row>
-
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
