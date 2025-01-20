@@ -1,5 +1,5 @@
 import { TQueryParam, TResponseRedux } from "../../../types/global";
-import { TAdmin, TStudent } from "../../../types/userManagement.type";
+import { TAdmin, TFaculty, TStudent } from "../../../types/userManagement.type";
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
@@ -78,11 +78,73 @@ const userManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getAdminById: builder.query({
+      query: (id: string) => ({
+        url: `/users/admins/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TAdmin>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
+    createFaculty: builder.mutation({
+      query: (body) => ({
+        url: "/users/create-faculty",
+        method: "POST",
+        body,
+      }),
+    }),
+    getAllFaculties: builder.query({
+      query: () => ({
+        url: "/users/faculties",
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TFaculty[]>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
+    getFacultyById: builder.query({
+      query: (id: string) => ({
+        url: `/users/faculties/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TFaculty>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
+    getAllUsers: builder.query({
+      query: () => ({
+        url: "/users",
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TStudent[]>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
   }),
 });
 
 export const {
+  useGetAllAdminsQuery,
+  useGetAdminByIdQuery,
+  useCreateAdminMutation,
+  useGetAllFacultiesQuery,
+  useGetFacultyByIdQuery,
+  useCreateFacultyMutation,
   useGetAllStudentsQuery,
-  useCreateStudentMutation,
   useGetStudentByIdQuery,
+  useCreateStudentMutation,
+  useGetAllUsersQuery,
 } = userManagementApi;
