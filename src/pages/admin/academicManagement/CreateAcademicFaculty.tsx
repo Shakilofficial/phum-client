@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import PHForm from "../../../components/form/PHForm";
 import PHInput from "../../../components/form/PHInput";
 import { useCreateAcademicFacultyMutation } from "../../../redux/features/admin/academicManagementApi";
-import { academicFacultySchema } from "../../../schemas/academicManagement/academicSemesterSchema";
+import { academicFacultySchema } from "../../../schemas/academicManagement/academicManagementSchema";
 import { TResponse } from "../../../types/global";
 
 const CreateAcademicFaculty = () => {

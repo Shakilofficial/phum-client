@@ -7,7 +7,7 @@ import PHSelect from "../../../components/form/PHSelect";
 import { semesterOptions } from "../../../constants/global";
 import { monthOptions } from "../../../constants/semester";
 import { useCreateAcademicSemesterMutation } from "../../../redux/features/admin/academicManagementApi";
-import { academicSemesterSchema } from "../../../schemas/academicManagement/academicSemesterSchema";
+import { academicSemesterSchema } from "../../../schemas/academicManagement/academicManagementSchema";
 
 const currentYear = new Date().getFullYear();
 const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
