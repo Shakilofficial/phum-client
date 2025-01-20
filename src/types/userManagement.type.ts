@@ -50,8 +50,9 @@ export type TFaculty = {
 
 export type TAdmin = {
   _id: string;
-  user: TUser;
+  id: string;
   designation: string;
+  user: TUser;
   name: TName;
   gender: string;
   dateOfBirth: string;

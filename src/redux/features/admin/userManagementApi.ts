@@ -1,5 +1,10 @@
 import { TQueryParam, TResponseRedux } from "../../../types/global";
-import { TAdmin, TFaculty, TStudent } from "../../../types/userManagement.type";
+import {
+  TAdmin,
+  TFaculty,
+  TStudent,
+  TUser,
+} from "../../../types/userManagement.type";
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
@@ -98,10 +103,22 @@ const userManagementApi = baseApi.injectEndpoints({
       }),
     }),
     getAllFaculties: builder.query({
-      query: () => ({
-        url: "/users/faculties",
-        method: "GET",
-      }),
+      query: (args) => {
+        console.log(args);
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return {
+          url: "/faculties",
+          method: "GET",
+          params: params,
+        };
+      },
       transformResponse: (response: TResponseRedux<TFaculty[]>) => {
         return {
           data: response.data,
@@ -122,11 +139,23 @@ const userManagementApi = baseApi.injectEndpoints({
       },
     }),
     getAllUsers: builder.query({
-      query: () => ({
-        url: "/users",
-        method: "GET",
-      }),
-      transformResponse: (response: TResponseRedux<TStudent[]>) => {
+      query: (args) => {
+        console.log(args);
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return {
+          url: "/users",
+          method: "GET",
+          params: params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<TUser[]>) => {
         return {
           data: response.data,
           meta: response.meta,
