@@ -7,7 +7,6 @@ import {
   TableProps,
 } from "antd";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useGetAllUsersQuery } from "../../redux/features/admin/userManagementApi";
 import { TQueryParam } from "../../types/global";
 import { TUser } from "../../types/userManagement.type";
@@ -62,12 +61,9 @@ const UserLists = () => {
     {
       title: "Action",
       key: "action",
-      render: (item) => {
+      render: () => {
         return (
           <Space>
-            <Link to={`/admin/all-users/${item.key}`}>
-              <Button>Details</Button>
-            </Link>
             <Button>Edit</Button>
             <Button>Remove</Button>
           </Space>

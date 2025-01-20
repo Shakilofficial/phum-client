@@ -85,7 +85,7 @@ const userManagementApi = baseApi.injectEndpoints({
     }),
     getAdminById: builder.query({
       query: (id: string) => ({
-        url: `/users/admins/${id}`,
+        url: `admins/${id}`,
         method: "GET",
       }),
       transformResponse: (response: TResponseRedux<TAdmin>) => {
@@ -128,7 +128,7 @@ const userManagementApi = baseApi.injectEndpoints({
     }),
     getFacultyById: builder.query({
       query: (id: string) => ({
-        url: `/users/faculties/${id}`,
+        url: `faculties/${id}`,
         method: "GET",
       }),
       transformResponse: (response: TResponseRedux<TFaculty>) => {
