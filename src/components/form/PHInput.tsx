@@ -9,16 +9,15 @@ type TPHInputProps = {
 
 const PHInput = ({ type, name, label }: TPHInputProps) => {
   return (
-    <div>
-      <Controller
-        name={name}
-        render={({ field }) => (
-          <Form.Item label={label}>
-            <Input {...field} type={type} id={name} />
-          </Form.Item>
-        )}
-      />
-    </div>
+    <Controller
+      name={name}
+      render={({ field, fieldState: { error } }) => (
+        <Form.Item label={label}>
+          <Input {...field} type={type} id={name} />
+          {error && <small style={{ color: "red" }}>{error.message}</small>}
+        </Form.Item>
+      )}
+    />
   );
 };
 

@@ -28,6 +28,7 @@ const StudentLists = () => {
   } = useGetAllStudentsQuery([
     { name: "page", value: page },
     { name: "sort", value: "id" },
+    { name: "limit", value: 2 },
     ...params,
   ]);
 
