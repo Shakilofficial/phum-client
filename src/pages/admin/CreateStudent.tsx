@@ -3,7 +3,6 @@ import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import PHDatePicker from "../../components/form/PHDatePicker";
 import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
-
 import PHSelect from "../../components/form/PHSelect";
 import { bloodGroupOptions, genderOptions } from "../../constants/semester";
 import {
@@ -42,7 +41,7 @@ const studentDefaultData = {
 };
 
 const CreateStudent = () => {
-  const [addStudent, { data, error }] = useCreateStudentMutation();
+  const [createStudent, { data, error }] = useCreateStudentMutation();
 
   console.log({ data, error });
 
@@ -73,7 +72,7 @@ const CreateStudent = () => {
     formData.append("data", JSON.stringify(studentData));
     formData.append("file", data.image);
 
-    addStudent(formData);
+    createStudent(formData);
 
     //! This is for development
     //! Just for checking
