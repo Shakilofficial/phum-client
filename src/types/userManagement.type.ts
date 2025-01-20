@@ -4,7 +4,7 @@ import {
   TAcademicSemester,
 } from "./academicManagement";
 
-export interface TStudent {
+export type TStudent = {
   _id: string;
   id: string;
   user: TUser;
@@ -25,7 +25,24 @@ export interface TStudent {
   academicDepartment: TAcademicDepartment;
   academicFaculty: TAcademicFaculty;
   fullName: string;
-}
+};
+
+export type TAdmin = {
+  _id: string;
+  user: TUser;
+  designation: string;
+  name: TName;
+  gender: string;
+  dateOfBirth: string;
+  email: string;
+  contactNo: string;
+  emergencyContactNo: string;
+  bloodGroup: string;
+  presentAddress: string;
+  permanentAddress: string;
+  profileImg: string;
+  isDeleted: boolean;
+};
 
 export type TUser = {
   _id: string;

@@ -1,5 +1,5 @@
 import { TQueryParam, TResponseRedux } from "../../../types/global";
-import { TStudent } from "../../../types/userManagement.type";
+import { TAdmin, TStudent } from "../../../types/userManagement.type";
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
@@ -41,6 +41,37 @@ const userManagementApi = baseApi.injectEndpoints({
         method: "GET",
       }),
       transformResponse: (response: TResponseRedux<TStudent>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
+    createAdmin: builder.mutation({
+      query: (body) => ({
+        url: "/users/create-admin",
+        method: "POST",
+        body,
+      }),
+    }),
+    getAllAdmins: builder.query({
+      query: (args) => {
+        console.log(args);
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return {
+          url: "/admins",
+          method: "GET",
+          params: params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<TAdmin[]>) => {
         return {
           data: response.data,
           meta: response.meta,
