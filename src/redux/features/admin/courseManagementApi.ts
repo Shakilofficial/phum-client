@@ -70,7 +70,7 @@ const courseManagementApi = baseApi.injectEndpoints({
     }),
     createCourse: builder.mutation({
       query: (data) => ({
-        url: `/courses/create-course`,
+        url: "/courses/create-course",
         method: "POST",
         body: data,
       }),
@@ -84,6 +84,28 @@ const courseManagementApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["courses"],
     }),
+    getCourseFaculties: builder.query({
+      query: (id) => {
+        return {
+          url: `/courses/${id}/faculties`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<any>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+    }),
+    createOfferedCourse: builder.mutation({
+      query: (data) => ({
+        url: "/offered-courses/create-offered-course",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["courses"],
+    }),
   }),
 });
 
@@ -94,4 +116,6 @@ export const {
   useGetAllCoursesQuery,
   useCreateCourseMutation,
   useAssignFacultiesMutation,
+  useGetCourseFacultiesQuery,
+  useCreateOfferedCourseMutation,
 } = courseManagementApi;
